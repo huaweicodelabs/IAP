@@ -29,18 +29,17 @@ import java.security.SignatureException;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.X509EncodedKeySpec;
 
+
 public class CipherUtil {
     private static final String TAG = "HMS_LOG_CipherUtil";
 
     private static final String SIGN_ALGORITHMS = "SHA256WithRSA";
 
     /**
-     * To check the signature for the data returned from the interface.
-     *
-     * @param content Unsigned data.
-     * @param sign the signature for content.
-     * @param publicKey the public key of the application.
-     *
+     * the method to check the signature for the data returned from the interface
+     * @param content Unsigned data
+     * @param sign the signature for content
+     * @param publicKey the public of the application
      * @return boolean
      */
     public static boolean doCheck(String content, String sign, String publicKey) {

@@ -26,12 +26,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.iapdemo.common.CipherUtil;
 import com.example.iapdemo.common.Key;
-import com.hmsdemo.doubleballsapp.huawei.R;
+import com.hmsiap.codelab.huawei.R;
 import com.huawei.hmf.tasks.OnFailureListener;
 import com.huawei.hmf.tasks.OnSuccessListener;
 import com.huawei.hmf.tasks.Task;
@@ -106,6 +105,7 @@ public class DemoActivity extends Activity {
                 } else {
                     Toast.makeText(DemoActivity.this, "error", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
     }
@@ -286,7 +286,6 @@ public class DemoActivity extends Activity {
                 Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
                 if (e instanceof IapApiException) {
                     IapApiException apiException = (IapApiException)e;
-                    Status status = apiException.getStatus();
                     int returnCode = apiException.getStatusCode();
                     Log.e(TAG, "consumeOwnedPurchase fail,returnCode: " + returnCode);
                 } else {
