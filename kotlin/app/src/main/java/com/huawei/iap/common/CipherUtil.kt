@@ -24,7 +24,7 @@ import java.security.spec.InvalidKeySpecException
 import java.security.spec.X509EncodedKeySpec
 
 object CipherUtil {
-    
+
     private val TAG = "HMS_LOG_CipherUtil"
     private val SIGN_ALGORITHMS = "SHA256WithRSA"
 
@@ -37,11 +37,17 @@ object CipherUtil {
      *
      * @return boolean
      */
-    fun doCheck(content: String,sign: String?, publicKey: String?): Boolean {
+    fun doCheck(content: String, sign: String?, publicKey: String?): Boolean {
         if (TextUtils.isEmpty(publicKey)) {
             Log.e(TAG, "publicKey is null")
             return false
         }
+
+        if (TextUtils.isEmpty(content) || TextUtils.isEmpty(sign)) {
+            Log.e(TAG, "data is error")
+            return false
+        }
+
         try {
             val keyFactory = KeyFactory.getInstance("RSA")
             val encodedKey = Base64.decode(publicKey, Base64.DEFAULT)
