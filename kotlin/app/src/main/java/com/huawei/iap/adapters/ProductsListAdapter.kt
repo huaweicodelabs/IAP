@@ -18,9 +18,6 @@ package com.huawei.iap.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.huawei.iap.R
@@ -54,14 +51,11 @@ class ProductsListAdapter(var names: List<ProductsListModel>,private val product
     }
 
     inner class MyViewHolder(itemView: View) : ViewHolder(itemView) {
-
         fun bindItems(productModel: ProductsListModel){
-            productModel?.let {  productDetails ->{
+            if (productModel != null) {
                 itemView.item_name.text = productModel.name
                 itemView.item_price.text = productModel.price
                 itemView.item_image.setImageResource(productModel.image)
-
-            }
             }
             itemView.setOnClickListener {
                 productItemClick.onClick(productModel)
