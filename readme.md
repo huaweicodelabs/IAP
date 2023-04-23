@@ -1,6 +1,6 @@
 # Huawei In-App Purchases Demo
 
-The iap_demo App demonstrates Huawei In-App Purchases (IAP) client APIs and usages. 
+This demo App demonstrates Huawei In-App Purchases (IAP) client APIs and usages. 
 
 Documentation can be found at this 
 [link](https://developer.huawei.com/consumer/cn/codelab/HMSInAppPurchase/index.html#0).
@@ -34,12 +34,18 @@ This project implements the purchase process of consumable products, helping dev
 
 ## Getting Started
 
-    1. Register as a developer.
-    Register a [HUAWEI account](https://developer.huawei.com/consumer/en/).
-    2. Create an app.
-    Create an app and enable APIs.
-    3. Build the demo.
-    To build this demo, please first import the demo to Android Studio (3.X or later). Then download the agconnect-services.json file of the app from AppGallery Connect, and add the file to the app directory (\app) of the demo. For details, please refer to [Preparations for Integrating HUAWEI HMS Core](https://developer.huawei.com/consumer/en/codelab/HMSPreparation/index.html)
+   1. Finish the configuration in AppGallery Connect. For details, please refer to [the related document](https://developer.huawei.com/consumer/en/codelabsPortal/carddetails/HMSInAppPurchase).
+	  - Finish integration preparations.
+	  - Enable IAP.
+	  - Configuring Your Products.
+   2. Check whether the Android studio development environment is ready.
+   3. Build the demo.
+      - Download the file "agconnect-services.json" of the app on AGC, and add the file to the app root directory(\app) of the demo. 
+      - Add the certificate file to the app root directory(\app) of the demo and add your configuration to in the app-level `build.gradle` file. 
+      - Open the app-level `build.gradle` file, and change the value of applicationId to your app package name.
+      - Replace the PUBLIC_KEY in the Key class with the public key of your app. For details about how to obtain the public key, please refer to [Querying IAP Information](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides/query-payment-info-0000001050166299).
+      - Replace products in the demo with your products.
+   4. Run the sample on your Android device or emulator.
 
 ## Environment requirement
 
@@ -47,14 +53,16 @@ To be able to develop, build and debug this demo, you will need at least the fol
 
 ### Hardware Requirements
 * A computer (desktop or laptop)
-* A Huawei phone used for running the app with HUAWEI IAP integrated.
-* A data cable used for conneting the computer to the Huawei phone.
+* A phone used for running the app with HUAWEI IAP integrated.
+* A data cable used for conneting the computer to the phone.
 
 ### Software Requirements
-* Android Studio 3.0 or later
-* Java SDK 1.7 or later
-* HMS（APK）3.0.0.300 or later
-* HMS SDK 3.0.0.300 or later
+* JDK version: 1.8 or later
+* Android Studio version: 3.6.1 or later
+  - minSdkVersion: 19 or later
+  - targetSdkVersion: 30 (recommended)
+  - compileSdkVersion: 30 (recommended)
+  - Gradle version: 5.4.1 or later (recommended)
 
 ## Installation
 
