@@ -1,17 +1,17 @@
 /**
  * Copyright 2020. Huawei Technologies Co., Ltd. All rights reserved.
- *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package com.example.iapdemo.activity;
@@ -28,9 +28,10 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.example.iapdemo.R;
 import com.example.iapdemo.common.CipherUtil;
 import com.example.iapdemo.common.Key;
-import com.hmsiap.codelab.huawei.R;
+
 import com.huawei.hmf.tasks.OnFailureListener;
 import com.huawei.hmf.tasks.OnSuccessListener;
 import com.huawei.hmf.tasks.Task;
@@ -79,7 +80,7 @@ public class DemoActivity extends Activity {
      * Load products information and show the products
      */
     private void loadProduct() {
-        listView = (ListView)findViewById(R.id.itemlist);
+        listView = (ListView) findViewById(R.id.itemlist);
         // obtain in-app product details configured in AppGallery Connect, and then show the products
         IapClient iapClient = Iap.getIapClient(DemoActivity.this);
         Task<ProductInfoResult> task = iapClient.obtainProductInfo(createProductInfoReq());
@@ -120,7 +121,7 @@ public class DemoActivity extends Activity {
         ArrayList<String> productIds = new ArrayList<>();
         // Pass in the item_productId list of products to be queried.
         // The product ID is the same as that set by a developer when configuring product information in AppGallery Connect.
-        productIds.add("CProduct1");
+        productIds.add("CProduct01");
         req.setProductIds(productIds);
         return req;
     }
@@ -196,7 +197,7 @@ public class DemoActivity extends Activity {
                 Log.e(TAG, e.getMessage());
                 Toast.makeText(activity, e.getMessage(), Toast.LENGTH_SHORT).show();
                 if (e instanceof IapApiException) {
-                    IapApiException apiException = (IapApiException)e;
+                    IapApiException apiException = (IapApiException) e;
                     int returnCode = apiException.getStatusCode();
                     Log.e(TAG, "createPurchaseIntent, returnCode: " + returnCode);
                     // handle error scenarios
@@ -233,7 +234,7 @@ public class DemoActivity extends Activity {
                 return;
             }
             PurchaseResultInfo purchaseResultInfo = Iap.getIapClient(this).parsePurchaseResultInfoFromIntent(data);
-            switch(purchaseResultInfo.getReturnCode()) {
+            switch (purchaseResultInfo.getReturnCode()) {
                 case OrderStatusCode.ORDER_STATE_SUCCESS:
                     // verify signature of payment results.
                     boolean success = CipherUtil.doCheck(purchaseResultInfo.getInAppPurchaseData(), purchaseResultInfo.getInAppDataSignature(), Key.getPublicKey());
@@ -285,7 +286,7 @@ public class DemoActivity extends Activity {
                 Log.e(TAG, e.getMessage());
                 Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
                 if (e instanceof IapApiException) {
-                    IapApiException apiException = (IapApiException)e;
+                    IapApiException apiException = (IapApiException) e;
                     int returnCode = apiException.getStatusCode();
                     Log.e(TAG, "consumeOwnedPurchase fail,returnCode: " + returnCode);
                 } else {
